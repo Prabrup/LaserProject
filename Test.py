@@ -33,15 +33,15 @@ ch_1.Manager.CheckSignalFlow()                       # This is a useful method t
 sg_0 = mre2.Mirror.Channel_0.SignalGenerator
 
 sg_0.SetUnit(optoMDC.Units.CURRENT)                 # here we set the sig gen to output in units of current (This must match the control mode!)
-sg_0.SetShape(optoMDC.Waveforms.SINUSOIDAL)         # here we set the sig gen output waveform type
-sg_0.SetFrequency(10.0)                             # here we set the frequency in Hz
-sg_0.SetAmplitude(0.100)                            # here we set the amplitude in Amps
+sg_0.SetShape(optoMDC.Waveforms.TRIANGLE)         # here we set the sig gen output waveform type
+sg_0.SetFrequency(2)                             # here we set the frequency in Hz
+sg_0.SetAmplitude(0.010)                            # here we set the amplitude in Amps
 sg_0.Run()
 
 sg_1 = mre2.Mirror.Channel_1.SignalGenerator
 
 sg_1.SetUnit(optoMDC.Units.CURRENT)                 # here we set the sig gen to output in units of current (This must match the control mode!)
-sg_1.SetShape(optoMDC.Waveforms.SINUSOIDAL)         # here we set the sig gen output waveform type
-sg_1.SetFrequency(10.0)                             # here we set the frequency in Hz
-sg_1.SetAmplitude(0.100)                            # here we set the amplitude in Amps
+sg_1.SetShape(optoMDC.Waveforms.PULSE)         # here we set the sig gen output waveform type
+sg_1.SetFrequency(2.0)                             # here we set the frequency in Hz
+sg_1.SetAmplitude(0.010)                            # here we set the amplitude in Amps
 sg_1.Run()
