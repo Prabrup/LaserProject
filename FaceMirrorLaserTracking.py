@@ -1,7 +1,7 @@
 import cv2
 import matplotlib.pyplot as plt
 import optoMDC
-"""
+
 mre2 = optoMDC.connect()
 
 ch_0 = mre2.Mirror.Channel_0
@@ -21,7 +21,7 @@ ch_1.SetControlMode(optoMDC.Units.XY)           # (3) here we tell the Manager t
 ch_1.LinearOutput.SetCurrentLimit(0.7)               # (4) here we tell the Manager to limit the current to 700mA (default)
 
 ch_1.Manager.CheckSignalFlow()                       # This is a useful method to make sure the signal flow is configured correctly.
-"""
+
 
 def map_value(value, old_min, old_max, new_min, new_max):
     mapped_value = (value - old_min) * ((new_max - new_min) / (old_max - old_min)) + new_min
@@ -51,8 +51,8 @@ def detect_bounding_box(vid):
         cv2.rectangle(vid, (x, y), (x + w, y + h), (0, 255, 0), 4)
         #print((x,y))
         print((map_value(x,0,int(video_capture.get(cv2.CAP_PROP_FRAME_WIDTH)),-1,1),map_value(x,0,int(video_capture.get(cv2.CAP_PROP_FRAME_HEIGHT)),-1,1)))
-        #si_0.SetXY(map_value(x,0,int(video_capture.get(cv2.CAP_PROP_FRAME_HEIGHT)),-1,1))
-        #si_1.SetXY(map_value(x,0,int(video_capture.get(cv2.WIDTH)),-1,1))
+        si_0.SetXY(map_value(x,0,int(video_capture.get(cv2.CAP_PROP_FRAME_HEIGHT)),-1,1))
+        si_1.SetXY(map_value(x,0,int(video_capture.get(cv2.WIDTH)),-1,1))
     return faces
 
 
