@@ -68,7 +68,7 @@ while True:
     y_data.clear()
 
     for (x, y, w, h) in faces:
-        x_data.append(x + w // 2) 
+        x_data.append(-1 + 2 * (x + w // 2) / frame.shape[1]) 
         y_data.append(-1 + 2 * (y + h // 2) / frame.shape[0])  
 
 
