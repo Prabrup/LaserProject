@@ -51,8 +51,6 @@ def detect_bounding_box(vid):
         cv2.rectangle(vid, (x, y), (x + w, y + h), (0, 255, 0), 4)
         #print((x,y))
         print((map_value(x,0,int(video_capture.get(cv2.CAP_PROP_FRAME_WIDTH)),-1,1),map_value(x,0,int(video_capture.get(cv2.CAP_PROP_FRAME_HEIGHT)),-1,1)))
-        si_0.SetXY(map_value(x,0,int(video_capture.get(cv2.CAP_PROP_FRAME_HEIGHT)),-1,1))
-        si_1.SetXY(map_value(x,0,int(video_capture.get(cv2.WIDTH)),-1,1))
     return faces
 
 
@@ -75,7 +73,9 @@ while True:
 
 
     line.set_xdata(x_data)
+    si_1.setXY(x_data)
     line.set_ydata(y_data)
+    si_0.setXY(y_data)
     plt.draw()
     plt.pause(0.01)  
     
