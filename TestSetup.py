@@ -80,5 +80,3 @@ def triangulation(b,c,d):
     y = d * np.sin(theta)
 
     return x,y
-
-triangulation(findDistanceAB(),findDistanceBC(),findDistanceAC())
