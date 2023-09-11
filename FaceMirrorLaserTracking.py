@@ -2,35 +2,39 @@ import cv2
 import matplotlib.pyplot as plt
 import optoMDC
 
-mre2 = optoMDC.connect()
+mre2 = optoMDC.connect() #Initialise mre2 object
 
+#Set up settings for camera one - first axis of control
 ch_0 = mre2.Mirror.Channel_0
 
-ch_0.StaticInput.SetAsInput()                        # (1) here we tell the Manager that we will use a static input
-ch_0.InputConditioning.SetGain(1.0)                  # (2) here we tell the Manager some input conditioning parameters
-ch_0.SetControlMode(optoMDC.Units.XY)           # (3) here we tell the Manager that our input will be in units of current
-ch_0.LinearOutput.SetCurrentLimit(0.7)               # (4) here we tell the Manager to limit the current to 700mA (default)
+ch_0.StaticInput.SetAsInput()                        
+ch_0.InputConditioning.SetGain(1.0)                 
+ch_0.SetControlMode(optoMDC.Units.XY)        
+ch_0.LinearOutput.SetCurrentLimit(0.7)              
 
-ch_0.Manager.CheckSignalFlow()                       # This is a useful method to make sure the signal flow is configured correctly.
+ch_0.Manager.CheckSignalFlow()          
 
+#Set up settings for camera one - second axis of control
 ch_1 = mre2.Mirror.Channel_1
 
-ch_1.StaticInput.SetAsInput()                        # (1) here we tell the Manager that we will use a static input
-ch_1.InputConditioning.SetGain(1.0)                  # (2) here we tell the Manager some input conditioning parameters
-ch_1.SetControlMode(optoMDC.Units.XY)           # (3) here we tell the Manager that our input will be in units of current
-ch_1.LinearOutput.SetCurrentLimit(0.7)               # (4) here we tell the Manager to limit the current to 700mA (default)
+ch_1.StaticInput.SetAsInput()                     
+ch_1.InputConditioning.SetGain(1.0)                  
+ch_1.SetControlMode(optoMDC.Units.XY)         
+ch_1.LinearOutput.SetCurrentLimit(0.7)               
 
-ch_1.Manager.CheckSignalFlow()                       # This is a useful method to make sure the signal flow is configured correctly.
+ch_1.Manager.CheckSignalFlow()                    
 
 
 def map_value(value, old_min, old_max, new_min, new_max):
     mapped_value = (value - old_min) * ((new_max - new_min) / (old_max - old_min)) + new_min
     return mapped_value
 
-
+#haarcascade classifer object
 face_classifier = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_frontalface_default.xml")
 
+#Video capture object
 video_capture = cv2.VideoCapture(0)  
+
 
 plt.ion()  
 fig, ax = plt.subplots()
@@ -44,6 +48,7 @@ ax.set_ylabel('Y')
 ax.set_title('Live XY Plot')
 ax.legend()
 
+#Run facial detection 
 def detect_bounding_box(vid):
     gray_image = cv2.cvtColor(vid, cv2.COLOR_BGR2GRAY)
     faces = face_classifier.detectMultiScale(gray_image,scaleFactor=1.1, minNeighbors=5, minSize=(40, 40))
@@ -53,7 +58,7 @@ def detect_bounding_box(vid):
         print((map_value(x,0,int(video_capture.get(cv2.CAP_PROP_FRAME_WIDTH)),-1,1),map_value(x,0,int(video_capture.get(cv2.CAP_PROP_FRAME_HEIGHT)),-1,1)))
     return faces
 
-
+#For loop for constant video capture
 while True:
     ret, frame = video_capture.read()
 
