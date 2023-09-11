@@ -6,21 +6,21 @@ Mirror2 = optoMDC.connect("COM5")
 
 ch_0 = Mirror1.Mirror.Channel_0
 
-ch_0.StaticInput.SetAsInput()                        # (1) here we tell the Manager that we will use a static input
-ch_0.InputConditioning.SetGain(1.0)                  # (2) here we tell the Manager some input conditioning parameters
-ch_0.SetControlMode(optoMDC.Units.XY)           # (3) here we tell the Manager that our input will be in units of current
-ch_0.LinearOutput.SetCurrentLimit(0.7)               # (4) here we tell the Manager to limit the current to 700mA (default)
+ch_0.StaticInput.SetAsInput()                       
+ch_0.InputConditioning.SetGain(1.0)                  
+ch_0.SetControlMode(optoMDC.Units.XY)           
+ch_0.LinearOutput.SetCurrentLimit(0.7)               
 
-ch_0.Manager.CheckSignalFlow()                       # This is a useful method to make sure the signal flow is configured correctly.
+ch_0.Manager.CheckSignalFlow()                       
 
 ch_1 = Mirror1.Mirror.Channel_1
 
-ch_1.StaticInput.SetAsInput()                        # (1) here we tell the Manager that we will use a static input
-ch_1.InputConditioning.SetGain(1.0)                  # (2) here we tell the Manager some input conditioning parameters
-ch_1.SetControlMode(optoMDC.Units.XY)           # (3) here we tell the Manager that our input will be in units of current
-ch_1.LinearOutput.SetCurrentLimit(0.7)               # (4) here we tell the Manager to limit the current to 700mA (default)
+ch_1.StaticInput.SetAsInput()                        
+ch_1.InputConditioning.SetGain(1.0)                  
+ch_1.SetControlMode(optoMDC.Units.XY)           
+ch_1.LinearOutput.SetCurrentLimit(0.7)               
 
-ch_1.Manager.CheckSignalFlow()                       # This is a useful method to make sure the signal flow is configured correctly.
+ch_1.Manager.CheckSignalFlow()                       
 
 Mirror1_Y = Mirror1.Mirror.Channel_0.StaticInput
 
@@ -30,21 +30,21 @@ Mirror1_X = Mirror1.Mirror.Channel_1.StaticInput
 
 ch_01 = Mirror2.Mirror.Channel_0
 
-ch_01.StaticInput.SetAsInput()                        # (1) here we tell the Manager that we will use a static input
-ch_01.InputConditioning.SetGain(1.0)                  # (2) here we tell the Manager some input conditioning parameters
-ch_01.SetControlMode(optoMDC.Units.XY)           # (3) here we tell the Manager that our input will be in units of current
-ch_01.LinearOutput.SetCurrentLimit(0.7)               # (4) here we tell the Manager to limit the current to 700mA (default)
+ch_01.StaticInput.SetAsInput()                        
+ch_01.InputConditioning.SetGain(1.0)                  
+ch_01.SetControlMode(optoMDC.Units.XY)           
+ch_01.LinearOutput.SetCurrentLimit(0.7)               
 
-ch_01.Manager.CheckSignalFlow()                       # This is a useful method to make sure the signal flow is configured correctly.
+ch_01.Manager.CheckSignalFlow()                       
 
 ch_11 = Mirror2.Mirror.Channel_1
 
-ch_11.StaticInput.SetAsInput()                        # (1) here we tell the Manager that we will use a static input
-ch_11.InputConditioning.SetGain(1.0)                  # (2) here we tell the Manager some input conditioning parameters
-ch_11.SetControlMode(optoMDC.Units.XY)           # (3) here we tell the Manager that our input will be in units of current
-ch_11.LinearOutput.SetCurrentLimit(0.7)               # (4) here we tell the Manager to limit the current to 700mA (default)
+ch_11.StaticInput.SetAsInput()                        
+ch_11.InputConditioning.SetGain(1.0)                  
+ch_11.SetControlMode(optoMDC.Units.XY)           
+ch_11.LinearOutput.SetCurrentLimit(0.7)               
 
-ch_11.Manager.CheckSignalFlow()                       # This is a useful method to make sure the signal flow is configured correctly.
+ch_11.Manager.CheckSignalFlow()                       
 
 Mirror2_Y = Mirror2.Mirror.Channel_0.StaticInput
 
