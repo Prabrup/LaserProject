@@ -5,7 +5,7 @@ from sklearn.metrics import mean_squared_error
 #d = [xc yc xd yd zd]
 #d = [0   1  2  3  4]
 def distances(d):
-    #Rosenbrock function
+    #Rosenbrock function - all equations to translate mirror distances with their relevant positions
     AC = np.sqrt(d[0]**2+d[1]**2)
     AD = np.sqrt(d[2]**2+d[3]**2+d[4]**2)
     BC = np.sqrt((np.sqrt(14604)-d[0])**2 + d[1]**2)
